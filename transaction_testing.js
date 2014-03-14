@@ -1,5 +1,6 @@
 var Remote = require('ripple-lib').Remote;
 var Amount = require('ripple-lib').Amount;
+var ripple = require('ripple-lib');
 var env = (function(){
   var Habitat = require('habitat');
   Habitat.load();
@@ -8,9 +9,6 @@ var env = (function(){
 
 
 var MY_ADDRESS = env.get('WALLET_B');
-var MY_SECRET  = env.get('SECRET');
-var RECIPIENT  = env.get('WALLET_A');
-var AMOUNT     = Amount.from_human('1XRP');
 
 var remote = new Remote({
   trusted:        true,
@@ -26,20 +24,17 @@ var remote = new Remote({
   ]
 });
 
+
 remote.connect(function() {
-  remote.set_secret(MY_ADDRESS, MY_SECRET);
-
-  var transaction = remote.transaction();
-
-  transaction.payment({
-    from: MY_ADDRESS, 
-    to: RECIPIENT, 
-    amount: AMOUNT
+  var request = remote.request_account_tx({
+    account: MY_ADDRESS,
+    ledger_index_min: -1,
+    ledger_index_max: -1,
+    limit: 1000
   });
-
-  transaction.submit(function(err, res) {
-    console.log(res);
-    console.log('\n');
-    console.log(err);
+  request.callback(function(err, res) {
+    console.log(res.transactions[0]);
   });
+  request.request();
 });
+

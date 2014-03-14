@@ -2,23 +2,15 @@
 <html>
 <head>
   <title>Ask Page</title>
-  <script>
-    function setCookie(cname, cvalue, exdays) {
-      var d = new Date();
-      d.setTime(d.getTime()+(exdays*24*60*60*1000));
-      var expires = "expires="+d.toGMTString();
-      document.cookie = cname + "=" + cvalue + "; " + expires;
-    }
-    setCookie('wallet', document.getElementById('wallet').value, 20);
-  </script>
 </head>
 <body>
   <h1>Ask Page</h1>
   <p>To proceed you'll need to pay 1XRP to ripple address <strong>rJrgRx6NVzzCYi48r9W7wcyQMkjD7qs8TQ</strong>.</p>
-  <p>Click here to pay: <a href="https://ripple.com//send?to=rJrgRx6NVzzCYi48r9W7wcyQMkjD7qs8TQ&amount=1">https://ripple.com//send?to=rJrgRx6NVzzCYi48r9W7wcyQMkjD7qs8TQ&amount=1&return_url=http://localhost:3000/ask</a></p>
-  <p>Once you've paid the fee, <br/>
-    Enter your wallet number: <input type="text" id="wallet"></input> <br/>
-    <a href="http://localhost:3000/vip">And you may proceed</a>.
+  <p>Click here to pay: <a href="https://ripple.com//send?to=rJrgRx6NVzzCYi48r9W7wcyQMkjD7qs8TQ&amount=1&dt={{dt}}&return_url=http://localhost:3000/ask">https://ripple.com//send?to=rJrgRx6NVzzCYi48r9W7wcyQMkjD7qs8TQ&amount=1&dt={{dt}}&return_url=http://localhost:3000/vip</a></p>
+  <p>
+    Once you've paid the fee...
+    <br/>
+    <a href="http://localhost:3000/vip">You may proceed</a>.
   </p>
 </body>
 </html>
