@@ -11,7 +11,7 @@ ripple-gate is a piece of node.js middlewear that requires a small Ripple fee be
 ##  Usage
 
 ```js
-var RippleGate = require('ripple-wall');
+var RippleGate = require('ripple-gate');
 
 var gate = new RippleGate({
   payment: 1.0
@@ -30,6 +30,7 @@ app.get('/exlcusive', gate.check, function() {
  * `payment` **number** The payment amount in XRP
  * `timeLimit` **number** The length of time, in milliseconds, that this user will have access to this URI.
  * `wallet` **string** The address of your Ripple wallet. This is where the payments will be routed.
+ * `askURI` **string** The URI to which a user will be routed when asking for payment
 
 
 ##  Philosophy
