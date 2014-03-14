@@ -1,0 +1,37 @@
+{
+  "name": "Ripple Gate",
+  "version": "0.0.1",
+  "description": "Ripple Gate is a piece of node.js middlewear that requires a small Ripple payment before http calls are made to a specified URI.",
+  "homepage": "http://github.com/vogtb/ripple-gate",
+  "author": "Ben Vogt <benjvogt@gmail.com>",
+  "contributors": [
+    "Ben Vogt <benjvogt@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/vogtb/ripple-gate"
+  },
+  "bugs": {
+    "mail": "benjvogt@gmail.com",
+    "url": "http://github.com/vogtb/ripple-gate/issues"
+  },
+  "dependencies": {
+    "ripple-lib": "0.7.34"
+  },
+  "devDependencies": {
+
+  },
+  "main": "lib/ripple-gate.js",
+  "scripts": {
+    
+  },
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/vogtb/ripple-gate/raw/master/LICENSE"
+    }
+  ]
+}
