@@ -1,26 +1,24 @@
 #ripple-gate
 ###A penny for your request, dear?
 
+![alt tag](https://raw.github.com/vogtb/ripple-gate/master/img/header_img.png)
+
 ripple-gate is a piece of node.js middlewear that requires a small Ripple fee before http calls are made to a specified URI.
-
-##Install
-
-  $ git clone https://github.com/vogtb/ripple-wall
-
 
 ##  Usage
 
 ```js
-var RippleGate = require('ripple-gate');
+var RippleGate = require('../path/to/ripple-gate.js');
 
 var gate = new RippleGate({
   payment: 1.0
   timeLimit: 1000000,
-  wallet : 'rLrrWn6BPzzYCi23r9W7wcyQMkjD7sq8TW'
+  wallet : 'rLrrWn6BPzzYCi23r9W7wcyQMkjD7sq8TW',
+  askPath: '/ask'
 });
 
 /*Use as a middlewear function in an Express.js setup.*/
-app.get('/exlcusive', gate.check, function() {
+app.get('/vip', gate.check, function() {
   return 'Welcome to the VIP.';
 });
 ```
@@ -30,7 +28,7 @@ app.get('/exlcusive', gate.check, function() {
  * `payment` **number** The payment amount in XRP
  * `timeLimit` **number** The length of time, in milliseconds, that this user will have access to this URI.
  * `wallet` **string** The address of your Ripple wallet. This is where the payments will be routed.
- * `askURI` **string** The URI to which a user will be routed when asking for payment
+ * `askPath` **string** The path to which a user will be routed when asking for payment
 
 
 ##  Philosophy
