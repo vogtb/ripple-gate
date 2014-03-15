@@ -1,6 +1,5 @@
 var Remote = require('ripple-lib').Remote;
 var Amount = require('ripple-lib').Amount;
-var ripple = require('ripple-lib');
 var env = (function(){
   var Habitat = require('habitat');
   Habitat.load();
@@ -33,7 +32,7 @@ remote.connect(function() {
     limit: 1000
   });
   request.callback(function(err, res) {
-    console.log(res.transactions[0]);
+    console.log(res.transactions);
   });
   request.request();
 });
