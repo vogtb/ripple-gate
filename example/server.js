@@ -5,7 +5,7 @@ var app = express();
 
 var gate = new RippleGate({
   payment: 1.0,
-  timeLimit: 86400,
+  timeLimit: 30,
   wallet : 'ra1UbcPh8y5BeBtfMqtMspfVeT7dZTj7qk',
   askPath: '/ask'
 });
