@@ -1,5 +1,7 @@
 /*
-    run tests using mocha
+  run tests using mocha
+
+  dir/ripple-gate   $ mocha
 */
 var assert = require("assert");
 var expect = require('chai').expect;
