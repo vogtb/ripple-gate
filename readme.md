@@ -1,9 +1,9 @@
 #ripple-gate
 ###A penny for your request, dear?
 
-![alt tag](https://raw.github.com/vogtb/ripple-gate/master/img/header_img.png)
+![alt tag](https://raw.github.com/vogtb/ripple-gate/master/header_img.png)
 
-Ripple Gate requires a small Ripple fee before http calls are made to a specified URI. It is a piece of node.js middlewear intended to be used in an express.js configuration.
+Ripple Gate requires a small Ripple fee before http calls are made to a specified path. It is a piece of node.js middlewear intended to be used in an express.js configuration.
 
 ##  Usage
 
