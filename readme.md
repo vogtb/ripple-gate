@@ -22,10 +22,12 @@ app.get('/vip',  gate.ensureID, gate.check, function() {
 });
 ```
 
+Take a look at the [example](https://github.com/vogtb/ripple-gate/tree/master/example) for more info.
+
 #### `feedOptions`
 
  * `payment` **number** The payment amount in XRP.
- * `timeLimit` **number** The length of time, in milliseconds, that this user will have access to this URI.
+ * `timeLimit` **number** The length of time, in seconds, that this user will have access to this URI.
  * `wallet` **string** The address of your Ripple wallet. This is where the payments will be routed.
  * `askPath` **string** The path to which a user will be routed when asking for payment.
 
@@ -34,3 +36,10 @@ app.get('/vip',  gate.ensureID, gate.check, function() {
 There are certain directories on your server that you want to limit access to. By specifying a micropayment in XRP -- less than a penny if you'd like -- you can limit the access to that directory. As the use of Ripple increases, you can use this to limit webcrawlers, or even fake users on your site.
 
 So far this is just proof-of-concept and hasn't been used on a live site.
+
+
+##  Testing
+Run tests with mocha
+```
+ripple-gate   $ mocha
+```
