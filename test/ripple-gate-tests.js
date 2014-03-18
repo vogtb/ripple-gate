@@ -81,17 +81,30 @@ describe('ripple-gate module', function(){
     var app = express();
     app.use(express.cookieParser('eac926631c1d21fe868dbf3ef150dfe884d92ee455f1e388a6d1dd225ed7e4ab'));
     app.use(express.session());
-    var setUpDummyID = function(req, res, next) {
+    var setUpGoodID = function(req, res, next) {
       req.session.rgid = 2627066912;
       next();
     }
-    app.get('/vip', setUpDummyID, gate.check, function(req, res) {
+    var setUpBadID = function(req, res, next) {
+      req.session.rgid = 0;
+      next();
+    }
+    app.get('/vip-good', setUpGoodID, gate.check, function(req, res) {
       res.send('vip reached');
     });
+    app.get('/vip-bad', setUpBadID, gate.check, function(req, res) {
+      res.send('vip reached');
+    });
+    app.get('/ask', function(req, res) {
+      res.send('ask page reached');
+    });
     var server = app.listen(3000, function() {
-      request("http://localhost:3000/vip", function(error, response, body) {
+      request("http://localhost:3000/vip-good", function(error, response, body) {
         expect(response.body).to.equal('vip reached');
-        done();
+        request("http://localhost:3000/vip-bad", function(error, response, body) {
+          expect(response.body).to.equal('ask page reached');
+          done();
+        });
       });
     });
   });
