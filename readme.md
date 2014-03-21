@@ -20,7 +20,12 @@ var gate = new RippleGate({
 app.get('/vip',  gate.ensureID, gate.check, function() {
   return 'Welcome to the VIP.';
 });
+
+app.get('/ask',  gate.ensureID, function() {
+  return 'Pay here please: https://ripple.com//send?to=ra1UbcPh8y5BeBtfMqtMspfVeT7dZTj7qk&amount=1&dt=1286961596';
+});
 ```
+If a user tries to go to localhost:3000/vip, they'll be rejected unless they've made a payment to your wallet with a DestinationTag that matches the session variable 'rgid'. The rgid is between 0 and 2^32 - 1, so you'd need a lot of users before you started seeing rgid collisions.
 
 Take a look at the [example](https://github.com/vogtb/ripple-gate/tree/master/example) for more info.
 
@@ -31,6 +36,10 @@ Take a look at the [example](https://github.com/vogtb/ripple-gate/tree/master/ex
  * `wallet` **string** The address of your Ripple wallet. This is where the payments will be routed.
  * `askPath` **string** The path to which a user will be routed when asking for payment.
 
+#### `functions`
+
+ * `ensureID(req, res, next)` **function** Used to ensure that the session variable rgid (req.session.rgid) has been set. This is the DestinationTag in the transaction, so when it checks your Ripple Wallet it can identify the transaction that corresponds to your session.
+ * `check(req, res, next)` **function** Should be used as a middlewear function on any path that you want to put a gate on. It checks the transactions of your wallet to see if any have a DestinationTag that matches req.session.rgid
 
 ##  Philosophy
 There are certain directories on your server that you want to limit access to. By specifying a micropayment in XRP -- less than a penny if you'd like -- you can limit the access to that directory. As the use of Ripple increases, you can use this to limit webcrawlers, or even fake users on your site.

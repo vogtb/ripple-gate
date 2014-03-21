@@ -20,7 +20,7 @@ describe('ripple-gate module', function(){
   });
 
   it('should simply initialize properly', function() {
-    assert.equal(gate.payment, 1000000);
+    assert.equal(gate.payment, 1);
     assert.equal(gate.timeLimit, 31536000);
     assert.equal(gate.wallet, 'ra1UbcPh8y5BeBtfMqtMspfVeT7dZTj7qk');
     assert.equal(gate.askPath, '/ask');
