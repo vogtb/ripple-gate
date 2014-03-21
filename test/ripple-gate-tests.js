@@ -109,4 +109,11 @@ describe('ripple-gate module', function(){
     });
   });
 
+  it('should be able to construct payment URIs', function(done) {
+    var dummyRequest = {session: {rgid: 827737272}};
+    var uri = gate.constructPaymentURI(dummyRequest);
+    expect(uri).to.equal('https://ripple.com//send?to=' + gate.wallet + '&amount=' + gate.payment + '&dt=' + dummyRequest.session.rgid);
+    done();
+  });
+
 });
