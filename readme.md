@@ -18,12 +18,12 @@ var gate = new RippleGate({
 
 /*Use as a middlewear function in an Express.js setup.*/
 app.get('/vip',  gate.ensureID, gate.check, function(req, res) {
-  return 'Welcome to the VIP.';
+  res.send('Welcome!');
 });
 
 app.get('/ask',  gate.ensureID, function(req, res) {
-  return 'Pay here please: ' + gate.constructPaymentURI(req);
-  //returns 'Pay here please: https://ripple.com//send?to=ra1UbcPh8y5BeBtfMqtMspfVeT7dZTj7qk&amount=1&dt=1286961596';
+  res.send('Pay here please: ' + gate.constructPaymentURI(req));
+  //sends 'Pay here please: https://ripple.com//send?to=ra1UbcPh8y5BeBtfMqtMspfVeT7dZTj7qk&amount=1&dt=1286961596';
 });
 ```
 If a user tries to go to /vip, they'll be rejected to /ask unless they've made a payment to your wallet with a DestinationTag that matches the session variable 'rgid'. The rgid is between 0 and 2^32 - 1, so you'd need a lot of users before you started seeing rgid collisions. If you restart your server, or re-initialize the gate, your users will be requested to pay the fee again.
@@ -52,5 +52,5 @@ So far this is just proof-of-concept and hasn't been used on a live site.
 ##  Testing
 Run tests with mocha
 ```
-ripple-gate   $ mocha
+  $ mocha
 ```
